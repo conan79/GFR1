@@ -1,0 +1,1298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PowerShapeDotNet</name>
+    </assembly>
+    <members>
+        <member name="T:PowerShapeDotNet.Enums.ExtensionExport">
+            <summary>
+            Enumeracion para Extensiones de Archivos a Exportar
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.ExtensionExport.igs">
+            <summary>
+            Formato Initial Graphics Exchange Specification (IGES)
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.ExtensionExport.pic">
+            <summary>
+            Formato Insertar/Trayectorias
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.ExtensionExport.dgk">
+            <summary>
+            The DGK
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.ExtensionExport.stl">
+            <summary>
+            The STL
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.ExtensionExport.dmt">
+            <summary>
+            The DMT
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Enums.Ejes">
+            <summary>
+            Enumeracion para Ejes de Trabajo
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.Ejes.x">
+            <summary>
+            Eje X
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.Ejes.y">
+            <summary>
+            Eje Y
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.Ejes.z">
+            <summary>
+            Eje Z
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Enums.TipoTerminacionCurva">
+            <summary>
+            Enumeracion para Terminacion de Curva
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoTerminacionCurva.abierta">
+            <summary>
+            Tipo de Curva Abierta (Open Curve)
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoTerminacionCurva.cerrada">
+            <summary>
+            Tipo de Curva Cerrada (Close Curve)
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Enums.TipoCurva">
+            <summary>
+            Enumeracion para Tipos de Curva
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoCurva.compuesta">
+            <summary>
+            Tipo de Curva Compuesta (CompCurve)
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoCurva.simple">
+            <summary>
+            Tipo de Curva Simple (Curve)
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Enums.TipoEntidad">
+            <summary>
+            Enumeracion para tipo enum_EntityType
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Surface">
+            <summary>
+            Tipo de entidad Surface
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Curve">
+            <summary>
+            Tipo de entidad Curve
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.CompCurve">
+            <summary>
+            Tipo de entidad CompCurve
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Line">
+            <summary>
+            Tipo de entidad Line
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Arc">
+            <summary>
+            Tipo de entidad Arc
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Workplane">
+            <summary>
+            Tipo de entidad Workplane
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Solid">
+            <summary>
+            Tipo de entidad Solid
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Point">
+            <summary>
+            Tipo de entidad Point
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Pcurve">
+            <summary>
+            Tipo de entidad PCurve
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Text">
+            <summary>
+            Tipo de entidad Text
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.Enums.TipoEntidad.Symbol">
+            <summary>
+            Tipo de entidad Symbol
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeArc">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Arc
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShape">
+            <summary>
+            Clase Base para Entidades de PowerShape
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShape.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una nueva instancia de <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShape"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShape.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una nueva instancia de <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShape"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShape.Calcular_Valores">
+            <summary>
+            Metodo para Detectar Valores Minimos y Maximos en todos los Ejes de Trabajo
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShape.Calcular_Valores(System.Int32)">
+            <summary>
+            Metodo para Detectar Valores Minimos y Maximos en todos los Ejes de Trabajo
+            </summary>
+            <param name="indice">Lugar de la entidad en la seleccion de PowerShape</param>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.Entidad">
+            <summary>
+            Entidad del Objeto
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.TipoEntidad">
+            <summary>
+            Tipo de Entidad en Powershape
+            </summary>
+            <value>
+            Enumeracion de tipo enum_EntityType
+            </value>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.Nivel">
+            <summary>
+            Nivel de la Entidad
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.NombreEntidad">
+            <summary>
+            Nombre de la Entidad
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.XMinima">
+            <summary>
+            Valor X Minimo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.XMaxima">
+            <summary>
+            Valor X Maximo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.YMinima">
+            <summary>
+            Valor Y Minimo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.YMaxima">
+            <summary>
+            Valor Y Maximo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.ZMinima">
+            <summary>
+            Valor Z Minimo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.ZMaxima">
+            <summary>
+            Valor Z Maximo
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.ExtrusionZ">
+            <summary>
+            Valor de Extrusion en Eje Z
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.ExtrusionX">
+            <summary>
+            Valor de Extrusion en Eje X
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.ExtrusionY">
+            <summary>
+            Valor de Extrusion en Eje Y
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.SizeX">
+            <summary>
+            Obtiene el Tamaño de X (Xmaxima - Xminima)
+            </summary>
+            <value>
+            Valor de X
+            </value>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.SizeY">
+            <summary>
+            Obtiene el Tamaño de Y (Ymaxima - Yminima)
+            </summary>
+            <value>
+            Valor de Y
+            </value>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShape.SizeZ">
+            <summary>
+            Obtiene el Tamaño de Z (Zmaxima - Zminima)
+            </summary>
+            <value>
+            Valor de Z
+            </value>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeArc.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeArc"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeArc.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeArc"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve">
+            <summary>
+            Clase Base para Entidades de PowerShape tipo CompCurve
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve.Calcular_Terminacion(PowerShapeDotNet.Enums.TipoCurva,PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Metodo para Detectar que tipo de terminacion tiene una curva
+            </summary>
+            <param name="tipoEncontrado">Tipo de Curva basado en Enum TipoCurva</param>
+            <param name="entidad">entidad tipo clsEntityType de la seleccion</param>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve.TipoCurvas">
+            <summary>
+            Tipo de Curva
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapeCompCurve.TipoTerminacionCurvas">
+            <summary>
+            Tipo de Terminacion de la Curva
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo PCurve
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve.Calcular_Terminacion(PowerShapeDotNet.Enums.TipoCurva,PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Metodo para Detectar que tipo de terminacion tiene una curva
+            </summary>
+            <param name="tipoEncontrado">Tipo de Curva basado en Enum TipoCurva</param>
+            <param name="entidad">entidad tipo clsEntityType de la seleccion</param>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve.TipoCurvas">
+            <summary>
+            Tipo de Curva
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapePCurve.TipoTerminacionCurvas">
+            <summary>
+            Tipo de Terminacion de la Curva
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeLine">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Line
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeLine.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeLine"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeLine.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeLine"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePoint">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Point
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapePoint.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePoint"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapePoint.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapePoint"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeText">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Text
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeText.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeText"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeText.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeText"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeWorkPlane">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo WorkPlane
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeWorkPlane.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeWorkPlane"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeWorkPlane.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeWorkPlane"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSymbol">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Symbol
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSymbol.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSymbol"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSymbol.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSymbol"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSurface">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Surface
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSurface.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSurface"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSurface.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSurface"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSolid">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Solid
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSolid.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSolid"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeSolid.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeSolid"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve">
+            <summary>
+            Clase Base para Entidades de PowerShape Tipo Curve
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve.#ctor(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Inicializa una Instancia a la clase heredada de ObjetoPowerShape llamada <see cref="T:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve"/> class.
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="indice">lugar que ocupa en la seleccion de PowerShape</param>
+        </member>
+        <member name="M:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve.Calcular_Terminacion(PowerShapeDotNet.Enums.TipoCurva,PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Metodo para Detectar que tipo de terminacion tiene una curva
+            </summary>
+            <param name="tipoEncontrado">Tipo de Curva basado en Enum TipoCurva</param>
+            <param name="entidad">entidad tipo clsEntityType de la seleccion</param>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve.TipoCurvas">
+            <summary>
+            Tipo de Curva
+            </summary>
+        </member>
+        <member name="P:PowerShapeDotNet.Objetos.ObjetoPowerShapeCurve.TipoTerminacionCurvas">
+            <summary>
+            Tipo de Terminacion de la Curva
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.PMillDotNet">
+            <summary>
+            Libreria para automatizacion de tareas en powershape
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.#ctor">
+            <summary>
+            Constructor de la Clase
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Crear_Conexion">
+            <summary>
+            Crea la conexion con el documento de PowerMill
+            </summary>
+            <return>
+            Devuelve true si la conexion a sido satisfactoria.
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Crear_Nueva_Conexion">
+            <summary>
+            Crea una nueva instancia de conexion a Powermill
+            </summary>
+            <returns>true si hay creado satisfactoriamente la conexion, false si no la ha creado</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Hay_Conexion">
+            <summary>
+            Checkea el estado de la conexion al documento PowerMill
+            </summary>
+            <return>
+            Devuelve true si sigue habiendo conexion con Powershape
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Ejecutar_Comando(System.String)">
+            <summary>
+            Lanza una comando en Macro
+            </summary>
+            <param name="comando">Macro a Ejecutar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Ejecutar_Comando(System.String[])">
+            <summary>
+            Lanza una lista de comandos en Macro
+            </summary>
+            <param name="comandos">array de tipo string con las macros a ejecutar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Ejecutar_Comando_Devolucion(System.String)">
+            <summary>
+            Metodo para recibir un estado tras lanzar un comando
+            </summary>
+            <param name="comando">comando en macro a ejecutar</param>
+            <returns>estado en formato string</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Abrir_Proyecto(System.String)">
+            <summary>
+            Abre un proyecto nuevo en PowerMill
+            </summary>
+            <param name="path">ruta del Proyecto</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Apagar_Dialogos(System.Boolean)">
+            <summary>
+            Activa o Desactiva las ventanas de dialogos en PowerMill
+            </summary>
+            <param name="seleccion">si la seleccion es true desactiva los dialogos y si es false los activa</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Mostrar_PowerMill">
+            <summary>
+            Mostrar PowerMill
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Ocultar_PowerMill">
+            <summary>
+            Ocultar PowerMill
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Ocultar_Interfaz_Usuario(System.Boolean)">
+            <summary>
+            Oculta o Muestra el interfaz de usuario (menus y barras de herramientas)
+            </summary>
+            <param name="eleccion">true si se oculta, false si se muestra</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Comportamiento_Ventana_Activa(PowerSolutionDOTNetOLE.clsGlobalEnumerations.enum_WindowStateType)">
+            <summary>
+            Cambia el comportamiento de la ventana activa en Powermill (Maximimar, minimizar...)
+            </summary>
+            <param name="accion">accion de tipo clsGlobalEnumerations.enum_WindowStateType, para el comportamientod de la ventana activa</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PMillDotNet.Cerrar_PowerMill">
+            <summary>
+            Cierra PowerMill
+            </summary>
+        </member>
+        <member name="T:PowerShapeDotNet.PShapeDotNet">
+            <summary>
+            Libreria para automatizacion de tareas en powershape
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.PShapeDotNet.aplicacionPowershape">
+            <summary>
+            Variable contenedora de la aplicacion PowerShape activa
+            </summary>
+        </member>
+        <member name="F:PowerShapeDotNet.PShapeDotNet.documentoPowershape">
+            <summary>
+            Variable contenedora del Documento Activo en la Aplicacion.
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.#ctor">
+            <summary>
+            Constructor de la Clase
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Crear_Conexion">
+            <summary>
+            Crea la conexion con el documento de PowerShape
+            </summary>
+            <return>
+            Devuelve true si la conexion a sido satisfactoria.
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Hay_Conexion">
+            <summary>
+            Checkea el estado de la conexion al documento PowerShape
+            </summary>
+            <return>
+            Devuelve true si sigue habiendo conexion con Powershape
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Activar_Nivel(System.Int32)">
+            <summary>
+            Activa un Nivel en Powershape
+            </summary>
+            <param name="nivel">
+            Numero entero del nivel a activar.
+            </param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Desactivar_Nivel(System.Int32)">
+            <summary>
+            Desactiva un Nivel en Powershape
+            </summary>
+            <param name="nivel">
+            Numero entero del nivel a desactivar.
+            </param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Renombrar_Nivel(System.Int32,System.String)">
+            <summary>
+            Renombra un Nivel en Powershape
+            </summary>
+            <param name="nivel">
+            Numero entero del nivel a renombrar.
+            </param>
+            <param name="nombre">
+            Nuevo nombre del nivel.
+            </param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Crear_Nivel(System.Int32,System.String)">
+            <summary>
+            Crea un Nivel en Powershape
+            </summary>
+            <param name="numeroNivel">
+            Numero entero del nivel a crear.
+            </param>
+            <param name="nombreNivel">
+            Nombre del Nivel a Crear.
+            </param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Crear_Nivel(System.Int32,System.String,System.String)">
+            <summary>
+            Crea un subnivel hijo dentro de un nivel padre
+            </summary>
+            <param name="numeroNivel">Numero de Nivel</param>
+            <param name="nombrePadre">Nombre del Nivel Padre</param>
+            <param name="nombreHijo">Nombre del Nivel Hijo</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Nivel(System.Int32)">
+            <summary>
+            Seleccionar un Nivel en Powershape
+            </summary>
+            <param name="numeroNivel">
+            Numero entero del nivel a Seleccionar.
+            </param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Existe_Nivel(System.Int32)">
+            <summary>
+            Comprueba la existencia del Nivel
+            </summary>
+            <param name="numeroNivel">numero de nivel</param>
+            <returns>true si existe, false si no existe</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Existe_Nivel(System.String)">
+            <summary>
+            Busca la coincidencia de un nombre de Nivel en la lista de niveles de PowerShape
+            </summary>
+            <param name="nombreNivel">Nombre del Nivel a buscar</param>
+            <returns>devuelve true si lo a encontrado y false si no existen en la lista</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(PowerShapeDotNet.Objetos.ObjetoPowerShape,System.Int32)">
+            <summary>
+            Mueve una entidad existente a un nivel existente en el documento
+            </summary>
+            <param name="entidad">entidad Seleccionada</param>
+            <param name="numeroNivel">numero de nivel a mover</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(PowerShapeDotNet.Objetos.ObjetoPowerShape,System.Int32,System.String)">
+            <summary>
+            Mueve una entidad existente a un nivel, ya exista o no, si no existiese lo crearia y luego moveria la entidad
+            </summary>
+            <param name="entidad">entidad seleccionada</param>
+            <param name="numeroNivel">numero de nivel</param>
+            <param name="nombreNivel">nombre del nivel si no existiese</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(System.Int32)">
+            <summary>
+            Mueve al nivel seleccionado y existente, las entidades que ya hay seleccionadas en el documento PowerShape
+            </summary>
+            <param name="numeroNivel">numero de nivel</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(System.Int32,System.String)">
+            <summary>
+            Mueve al nivel seleccionado, las entidades que ya hay seleccionadas en el documento PowerShape, si no existiera el nivel lo crearia
+            </summary>
+            <param name="numeroNivel">numero de nivel</param>
+            <param name="nombreNivel">nombre de nivel si no existiese</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(PowerShapeDotNet.Objetos.ObjetoPowerShape,System.String)">
+            <summary>
+            Mueve una entidad a un Nivel identificado mediante su nombre
+            </summary>
+            <param name="entidad">Entidad en Powershape</param>
+            <param name="nombreNivel">Nombre del Nivel donde mover la entidad</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Mueve a un Nivel Hijo la entidad seleccionada en PowerShape, si el padre no existiese lo crearia, si el hijo no existiese tambien lo crearia
+            </summary>
+            <param name="numeroNivelPadre">Numero de Nivel del Nivel Padre</param>
+            <param name="numeroNivelHijo">Numero de Nivel del Nivel Hijo</param>
+            <param name="nombrePadre">Nombre del Nivel Padre</param>
+            <param name="nombreHijo">Nombre del Nivel Hijo</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Mover_A_Nivel(System.String)">
+            <summary>
+            Mover una entidad seleccionada en Powershape a un Nivel especifico
+            </summary>
+            <param name="nombreNivel">Nombre del Nivel a mover la entidad</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Numero_Nivel(System.String)">
+            <summary>
+            Obtiene el numero de nivel en Powershape a traves de su nombre de nivel
+            </summary>
+            <param name="nombreNivel">Nombre del nivel a buscar</param>
+            <returns>valor entero con el numero de nivel, devuelve -1 si no lo encuentra</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Nombre_Nivel(System.Int32)">
+            <summary>
+            Obtiene un nombre de Nivel a traves de su numero de nivel
+            </summary>
+            <param name="numeroNivel">valor entero con el numero de nivel</param>
+            <returns>Nombre del Nivel</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Listar_Niveles">
+            <summary>
+            Lista los niveles activos en Powershape
+            </summary>
+            <return>
+            Una Tabla con el numero de nivel y el nombre de este.
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Entidades_Nivel(System.Int32)">
+            <summary>
+            Selecciona todas las entidades de un nivel especifico y existente
+            </summary>
+            <param name="numeroNivel">numero de nivel</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Hay_Entidades_En_Nivel(System.Int32)">
+            <summary>
+            Obtiene el numero de entidades en el nivel Seleccionado y existente
+            </summary>
+            <param name="numeroNivel">numero de nivel</param>
+            <returns>cantidad de entidades en el nivel</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Nuevo_Numero_Nivel">
+            <summary>
+            Obtiene el siguiente numero de Nivel disponible para su uso
+            </summary>
+            <returns>valor de tipo entero con el numero de nivel disponible</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Importar_Fichero(System.String)">
+            <summary>
+            Importa un Archivo a Powershape
+            </summary>
+            <param name="pathFichero">Ruta del Archivo</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Exportar_Fichero(System.String,System.String,PowerShapeDotNet.Enums.ExtensionExport)">
+            <summary>
+            Exportar la Entidad o Modelo
+            </summary>
+            <param name="nombre">Nombre del Archivo</param>
+            <param name="ruta">Ruta del Archivo</param>
+            <param name="extension">Enumeracion de la extension para el Archivo Exportado</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Exportar_Fichero(System.String)">
+            <summary>
+            Exportar la Entidad u Modelo
+            </summary>
+            <param name="ruta">La ruta completa del modelo a exportar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Creadas">
+            <summary>
+            Obtiene las ultimas entidades Creadas en el documento Activo
+            </summary>
+            <return>
+            Devuelve una Tabla de tipo ObjetoPowerShape
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Creadas_Entidad">
+            <summary>
+            Obtiene las ultimas entidades Creadas en el documento Activo
+            </summary>
+            <return>
+            Devuelve una Tabla de tipo clsEntityType
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Seleccionadas_Entidad">
+            <summary>
+            Obtiene las entidades seleccionadas en el docuemnto activo
+            </summary>
+            <return>
+            Devuelve una Tabla de tipo clsEntityType
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Seleccionadas">
+            <summary>
+            Obtiene las entidades seleccionadas en el docuemnto activo
+            </summary>
+            <return>
+            Devuelve una Tabla de tipo ObjetoPowerShape
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Seleccionadas(System.Boolean)">
+            <summary>
+            En creacion
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Dimension_Seleccion">
+            <summary>
+            Obtiene el numero de elementos en la seleccion
+            </summary>
+            <returns>valor entero con el numero de elementos de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Nombre_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el nombre de la seleccion
+            </summary>
+            <param name="indice">valor entero indice dentro de la seleccion para diferenciar la entidad de las demas</param>
+            <returns>valor string con el nombre de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Tipo_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el tipo de entidad dentro de la seleccion
+            </summary>
+            <param name="indice">valor entero indice para la identificacion de la entidad dentro de la seleccion</param>
+            <returns>valor tipo enum_EntityType con el tipo de entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XMaxima_Seleccion">
+            <summary>
+            Obtiene el Valor Maximo de X en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor maximo de X de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XMaxima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Maximo de X de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor maximo de X de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XMinima_Seleccion">
+            <summary>
+            Obtiene el Valor Minimo de X en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor minimo de X de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XMinima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Minimo de X de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor minimo de X de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YMaxima_Seleccion">
+            <summary>
+            Obtiene el Valor Maximo de Y en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor maximo de Y de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YMaxima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Maximo de Y de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor maximo de Y de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YMinima_Seleccion">
+            <summary>
+            Obtiene el Valor Minimo de Y en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor minimo de Y de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YMinima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Minimo de Y de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor minimo de Y de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZMaxima_Seleccion">
+            <summary>
+            Obtiene el Valor Maximo de Z en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor maximo de Z de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZMaxima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Maximo de Z de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor maximo de Z de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZMinima_Seleccion">
+            <summary>
+            Obtiene el Valor Minimo de Z en la Seleccion
+            </summary>
+            <returns>valor tipo float con el valor minimo de Z de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZMinima_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Valor Minimo de Z de la entidad con indice indicado
+            </summary>
+            <param name="indice">indice localizador de la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el valor minimo de Z de la entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XSize_Seleccion">
+            <summary>
+            Obtiene el Tamaño en el Eje X de la seleccion
+            </summary>
+            <returns>valor tipo float con el tamaño X de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.XSize_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Tamaño en el Eje X de la entidad con el indice indicado dentro de la seleccion
+            </summary>
+            <param name="indice">indice para diferenciar la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el tamaño X de la entidad dentro seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YSize_Seleccion">
+            <summary>
+            Obtiene el Tamaño en el Eje Y de la seleccion
+            </summary>
+            <returns>valor tipo float con el tamaño Y de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.YSize_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Tamaño en el Eje Y de la entidad con el indice indicado dentro de la seleccion
+            </summary>
+            <param name="indice">indice para diferenciar la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el tamaño Y de la entidad dentro seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZSize_Seleccion">
+            <summary>
+            Obtiene el Tamaño en el Eje Z de la seleccion
+            </summary>
+            <returns>valor tipo float con el tamaño Z de la seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.ZSize_Seleccion(System.Int32)">
+            <summary>
+            Obtiene el Tamaño en el Eje Z de la entidad con el indice indicado dentro de la seleccion
+            </summary>
+            <param name="indice">indice para diferenciar la entidad dentro de la seleccion</param>
+            <returns>valor tipo float con el tamaño Z de la entidad dentro seleccion</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Seleccionadas_Entidad(PowerSolutionDOTNetOLE.enum_EntityType)">
+            <summary>
+            Obtiene las entidades seleccionadas en el documento activo segun su tipo
+            </summary>
+            <param name="tipo">enumeracion de tipo enum_EntityType</param>
+            <return>
+            Devuelve una Tabla de tipo clsEntityType
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Seleccionadas(PowerSolutionDOTNetOLE.enum_EntityType)">
+            <summary>
+            Obtiene las entidades seleccionadas en el documento activo segun su tipo
+            </summary>
+            <param name="tipo">enumeracion de tipo enum_EntityType</param>
+            <return>
+            Devuelve una Tabla de tipo ObjetoPowerShape
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Indice_Ventana_Activa">
+            <summary>
+            Obtiene el indice de la ventana Activa
+            </summary>
+            <returns>Indice de la ventana activa</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Entidad(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Selecciona la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Entidad(PowerSolutionDOTNetOLE.clsEntityType[])">
+            <summary>
+            Selecciona un grupo de Entidades
+            </summary>
+            <param name="entidadesSeleccionadas">Array de clsEntityType de tipo de Objeto</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Entidad_Add(System.String)">
+            <summary>
+            Selecciona la entidad y la Añade al grupo de seleccion si existiese
+            </summary>
+            <param name="nombre">Cadena de texto con el nombre de la entidad a seleccionar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Deseleccionar_Entidad(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Deselecciona la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Devolver_Nivel_Entidad(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Devuelve el nivel de la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <return>
+            Devuelve el numero de nivel donde se encuentra la entidad
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Renombrar_Entidad(PowerSolutionDOTNetOLE.clsEntityType,System.String)">
+            <summary>
+            Renombra la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="nombre">el nombre que recibira la entidad</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Borrar_Entidad(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Borra la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Cambiar_Color_Entidad(PowerSolutionDOTNetOLE.clsEntityType,System.String)">
+            <summary>
+            Cambia de color la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <param name="colorElegido">nombre del color</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Buscar_Entidad(System.String)">
+            <summary>
+            Busca una entidad por su nombre
+            </summary>
+            <param name="nombre">Nombre de la Entidad</param>
+            <return>
+            Devuelve la Entidad si la encuentra sino delvuelve un Null
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Todo">
+            <summary>
+            Selecciona todas la entidades del documento de trabajo
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Deseleccionar_Todo">
+            <summary>
+            Deselecciona todas la entidades del documento de trabajo
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Ventana_Activa">
+            <summary>
+            Obtiene la ventana activa en Powershape
+            </summary>
+            <returns>valor entero que identifica la ventana</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Hay_Seleccion">
+            <summary>
+            Obtiene true o false segun haya entidades seleccionadas o no
+            </summary>
+            <returns>valor tipo bool</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Activar_Plano_Trabajo(System.String)">
+            <summary>
+            Activa el plano de trabajo
+            </summary>
+            <param name="nombrePlano">nombre del plano de trabajo a activar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Desactivar_Plano_Trabajo">
+            <summary>
+            Desactivar todos los planos de trabajo
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Plano_Trabajo_Activo">
+            <summary>
+            Obtiene el plano de trabajo activo
+            </summary>
+            <returns>string con nombre de plano de trabajo</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Renombrar_Plano_Trabajo(System.String)">
+            <summary>
+            Renombra un plano de Trabajo Activo
+            </summary>
+            <param name="nombre">string con el nuevo nombre de plano de trabajo</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Selecciona_Todos_Planos_Trabajo">
+            <summary>
+            Selecciona todos los planos de trabajo
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Punto(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Selecciona el punto de la entidad
+            </summary>
+            <param name="entidad">entidad de tipo clsEntityType</param>
+            <param name="numero">numero de punto a seleccionar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Seleccionar_Punto(PowerSolutionDOTNetOLE.clsEntityType,System.Int32[])">
+            <summary>
+            Selecciona varios puntos de la entidad
+            </summary>
+            <param name="entidad">entidad de tipo clsEntityType</param>
+            <param name="numeros">array de enteros de puntos a seleccionar</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Borrar_Punto">
+            <summary>
+            Borra los puntos seleccionados
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Curva_Cerrada(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Checkea que tipo de curva es la entidad
+            </summary>
+            <param name="entidadSeleccionada">entidad de tipo clsEntityType</param>
+            <return>
+            Devuelve true si la curva es Cerrada y false si la curva es abierta
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Proyectar(System.Int32,PowerShapeDotNet.Enums.Ejes)">
+            <summary>
+            Proyecta una curva en el eje seleccionado
+            </summary>
+            <param name="posicion">la posicion de la curva</param>
+            <param name="nuevoEje">tipo de eje segun enumeracion tipo Ejes</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Atirantar_Curva">
+            <summary>
+            Atiranta una Curva a la que se le han borrado puntos
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Modificar(System.String,System.Single,System.Boolean)">
+            <summary>
+            Modificar la entidad Seleccionada
+            </summary>
+            <param name="nombre">Nuevo Nombre para la Entidad</param>
+            <param name="longuitud">Nueva Longuitud para la Entidad</param>
+            <param name="iguales">EQUAL ON = true, EQUAL OFF = false</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Crear_Extrusion">
+            <summary>
+            Crea la Extrusion de una Entidad seleccionada
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Copiar">
+            <summary>
+            Copiar una Seleccion al Portapapeles
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Pegar">
+            <summary>
+            Pegar en el documento activo el objeto del portapapeles
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Aplicar_Escala(System.Single,System.Single,System.Single)">
+            <summary>
+            Aplica una Escala a los objetos seleccionados.
+            </summary>
+            <param name="x">Valor de Escala para Eje X</param>
+            <param name="y">Valor de Escala para Eje Y</param>
+            <param name="z">Valor de Escala para Eje Z</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Blanquear_Seleccion">
+            <summary>
+            Blanquea la seleccion en el documento PowerShape
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Blanquear_Seleccion(PowerShapeDotNet.Objetos.ObjetoPowerShape[])">
+            <summary>
+            Blanquea las entidades
+            </summary>
+            <param name="entidades">array de Objetos Powershape</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Desblanquear_Seleccion">
+            <summary>
+            Desblanquea la seleccion
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Eje_De_Trabajo(PowerShapeDotNet.Enums.Ejes)">
+            <summary>
+            Selecciona Plano de Trabajo
+            </summary>
+            <param name="ejeSeleccionado">Enum Ejes para la Seleccion de eje</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Apagar_Dialogos(System.Boolean)">
+            <summary>
+            Activa o Desactiva las ventanas de dialogos en PowerShape
+            </summary>
+            <param name="seleccion">si la seleccion es true desactiva los dialogos y si es false los activa</param>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Cerrar_Dialogo_Exterior">
+            <summary>
+            Cierra una ventana de dialogo de programas exteriores a PowerShape
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Cerrar_Dialogo_PowerShape">
+            <summary>
+            Aceptar un dialog en PowerShape
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Activar_Nombres_Importacion">
+            <summary>
+            Activa opciones para la importacion/exportacion
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Activar_Ventana">
+            <summary>
+            Activa la ventana principal de PowerShape para que reciba el foco
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Ventana_Emergente">
+            <summary>
+            Metodo para saber si la ventana del documento actual esta en segundo plano
+            </summary>
+            <return>
+            Devuelve true si la ventana esta en primer plano y false si esta en segundo plano
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Obtener_Entidades_Objetos(PowerShapeDotNet.Objetos.ObjetoPowerShape[])">
+            <summary>
+            Obtiene un array de clsEntityType de un array de ObjetoPowerShape
+            </summary>
+            <param name="objetos">array de ObjetoPowerShape</param>
+            <returns>array de clsEntityType</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Icono_Seleccion">
+            <summary>
+            Devuelve el icon del puntero a su opcion de seleccion
+            </summary>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Es_Numerico(System.String)">
+            <summary>
+            Metodo para saber si una cadena dada es numerica
+            </summary>
+            <param name="cadena">la cadena de texto a checkear</param>
+            <return>
+            Devuelve true si es numerica y false si es alfanumerica
+            </return>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Devolver_Objeto(PowerSolutionDOTNetOLE.clsEntityType)">
+            <summary>
+            Obtiene el tipo de ObjetoPowerShape correspondiente al tipo de entidad
+            </summary>
+            <param name="tipo">entidad de tipo clsEntityType</param>
+            <returns>objeto de tipo ObjetoPowerShape del tipo de entidad</returns>
+        </member>
+        <member name="M:PowerShapeDotNet.PShapeDotNet.Devolver_Objeto(PowerSolutionDOTNetOLE.clsEntityType,System.Int32)">
+            <summary>
+            Obtiene el tipo de ObjetoPowerShape correspondiente al tipo de entidad en la seleccion segun su indice
+            </summary>
+            <param name="tipo">entidad de tipo clsEntityType</param>
+            <param name="indice">indice de la entidad dentro de la seleccion</param>
+            <returns>
+            objeto de tipo ObjetoPowerShape del tipo de entidad
+            </returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,16 @@
+F:\VISUAL\GFR\GFR\bin\Release\GFR.exe.config
+F:\VISUAL\GFR\GFR\bin\Release\Resources\folder_Closed_32xLG1.png
+F:\VISUAL\GFR\GFR\bin\Release\GFR.exe
+F:\VISUAL\GFR\GFR\bin\Release\GFR.pdb
+F:\VISUAL\GFR\GFR\obj\Release\GFR.GRFIMAGES.resources
+F:\VISUAL\GFR\GFR\obj\Release\GFR.Main.resources
+F:\VISUAL\GFR\GFR\obj\Release\GFR.Properties.Resources.resources
+F:\VISUAL\GFR\GFR\obj\Release\GFR.csproj.GenerateResource.Cache
+F:\VISUAL\GFR\GFR\obj\Release\GFR.exe
+F:\VISUAL\GFR\GFR\obj\Release\GFR.pdb
+F:\VISUAL\GFR\GFR\bin\Release\PowerShapeDotNet.dll
+F:\VISUAL\GFR\GFR\bin\Release\PowerSolutionDOTNetOLE.dll
+F:\VISUAL\GFR\GFR\bin\Release\PowerShapeDotNet.pdb
+F:\VISUAL\GFR\GFR\bin\Release\PowerShapeDotNet.xml
+F:\VISUAL\GFR\GFR\bin\Release\PowerSolutionDOTNetOLE.xml
+F:\VISUAL\GFR\GFR\obj\Release\GFR.csprojResolveAssemblyReference.cache
