@@ -55,8 +55,10 @@ namespace GFR
             amount = bhp.Count;
             if (amount > 0)
             {
+                //creamos tantos objetos como numero parametros para tener la base de construccion
                 TextBox[] textBoxes = new TextBox[amount];
                 Label[] labels = new Label[amount];
+                Button[] buttons = new Button[amount];
 
                 //borrar del panel los anteriores controles
                 foreach (CustomControls cc in myCustomControls)
@@ -65,6 +67,8 @@ namespace GFR
                     cc.LabelNameCC.Dispose();
                     (sender as Panel).Controls.Remove(cc.TextBoxCC);
                     cc.TextBoxCC.Dispose();
+                    (sender as Button).Controls.Remove(cc.ButtonCC);
+                    cc.ButtonCC.Dispose();
 
                 }
 
@@ -73,6 +77,7 @@ namespace GFR
                 for (int i = 0; i < amount; i++)
                 {
                     textBoxes[i] = new TextBox();
+                    buttons[i] = new Button();
                     // Here you can modify the value of the textbox which is at textBoxes[i]
                     textBoxes[i].Left = 180;
                     textBoxes[i].Top = TopOffset + (25 * i);
@@ -83,17 +88,57 @@ namespace GFR
                     labels[i].Top = TopOffset + (25 * i);
                     labels[i].Text = bhp[i].varName;
                     labels[i].Name = "cclbl" + i.ToString();
-                    // Here you can modify the value of the label which is at labels[i]
-                    myCustomControls.Add(new CustomControls(textBoxes[i], labels[i], bhp[i].varParam));
+                    //si es de tipo 3 <<>> añadiremos un botton para cojer la ruta
+                    if (bhp[i].isPath)
+                    {
+                        buttons[i].Name = "ccbtn" + i.ToString();
+                        buttons[i].Width = 25;
+                        buttons[i].Height = 25;
+                        buttons[i].Text = "D";
+                        buttons[i].BackColor = System.Drawing.Color.LightGoldenrodYellow;
+                        buttons[i].Top = textBoxes[i].Top;
+                        buttons[i].Left = 200 + textBoxes[i].Width;
+                        buttons[i].Click += new System.EventHandler(test1);
+                        myCustomControls.Add(new CustomControls(textBoxes[i], labels[i], bhp[i].varParam,buttons[i]));
+                    }
+                    else
+                    {
+                        myCustomControls.Add(new CustomControls(textBoxes[i], labels[i], bhp[i].varParam));
+                    }
                 }
 
-                // This adds the controls to the form (you will need to specify thier co-ordinates etc. first)
+                // esto añade los controles al form
                 foreach (CustomControls cc in myCustomControls)
                 {
                     (sender as Panel).Controls.Add(cc.TextBoxCC);
                     (sender as Panel).Controls.Add(cc.LabelNameCC);
+                    if (cc.HavePath)
+                    {
+
+                        (sender as Panel).Controls.Add(cc.ButtonCC);
+                   
+                    }
                 }
             }
         }
+
+        static void test1(object sender,System.EventArgs e)
+        {
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            DialogResult result = FBD.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                foreach (CustomControls cc in myCustomControls)
+                {
+                    if (cc.ButtonCC.Name == (sender as Button).Name)
+                    {
+                        cc.TextBoxCC.Text = FBD.SelectedPath +"\\" ;
+                    }
+                }
+               
+            }
+        }
+
+      
     }
 }

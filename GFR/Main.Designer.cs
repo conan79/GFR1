@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficherosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +57,7 @@
             this.CrearParametroBTN = new System.Windows.Forms.Button();
             this.FP_RTB = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.SendToPowerMillBTN = new System.Windows.Forms.Button();
             this.FicheroComandosTXT = new System.Windows.Forms.RichTextBox();
             this.ParametrosPanel = new System.Windows.Forms.Panel();
             this.XmlCustomFile_BTN = new System.Windows.Forms.Button();
@@ -93,6 +94,15 @@
             this.AplicarXmlBTN = new System.Windows.Forms.Button();
             this.XmlPanelCloseBTN = new System.Windows.Forms.Button();
             this.XMLtreeView = new System.Windows.Forms.TreeView();
+            this.PowerMillOptionsPanel = new System.Windows.Forms.Panel();
+            this.ProgramasCNPMBTN = new System.Windows.Forms.Button();
+            this.PlanosDeTrabajoPMBTN = new System.Windows.Forms.Button();
+            this.HerramientasPMBTN = new System.Windows.Forms.Button();
+            this.PatronesPMBTN = new System.Windows.Forms.Button();
+            this.LimitesPMBTN = new System.Windows.Forms.Button();
+            this.TrayectoriasPMBTN = new System.Windows.Forms.Button();
+            this.TodoPowerMillBTN = new System.Windows.Forms.Button();
+            this.ClosePMOptionsBTN = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageFile_PB)).BeginInit();
@@ -106,6 +116,7 @@
             this.HeadparamsPNL.SuspendLayout();
             this.PowerMillPanel.SuspendLayout();
             this.XmlPanel.SuspendLayout();
+            this.PowerMillOptionsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -343,6 +354,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2.Controls.Add(this.SendToPowerMillBTN);
             this.tabPage2.Controls.Add(this.FicheroComandosTXT);
             this.tabPage2.ForeColor = System.Drawing.Color.Black;
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
@@ -352,12 +364,24 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "FICHERO DE COMANDOS";
             // 
+            // SendToPowerMillBTN
+            // 
+            this.SendToPowerMillBTN.Location = new System.Drawing.Point(104, 6);
+            this.SendToPowerMillBTN.Name = "SendToPowerMillBTN";
+            this.SendToPowerMillBTN.Size = new System.Drawing.Size(190, 23);
+            this.SendToPowerMillBTN.TabIndex = 1;
+            this.SendToPowerMillBTN.Text = "APLICAR A POWER MILL";
+            this.SendToPowerMillBTN.UseVisualStyleBackColor = true;
+            this.SendToPowerMillBTN.Click += new System.EventHandler(this.SendToPowerMillBTN_Click);
+            // 
             // FicheroComandosTXT
             // 
             this.FicheroComandosTXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FicheroComandosTXT.Location = new System.Drawing.Point(6, 6);
+            this.FicheroComandosTXT.Location = new System.Drawing.Point(6, 35);
             this.FicheroComandosTXT.Name = "FicheroComandosTXT";
-            this.FicheroComandosTXT.Size = new System.Drawing.Size(387, 584);
+            this.FicheroComandosTXT.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FicheroComandosTXT.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.FicheroComandosTXT.Size = new System.Drawing.Size(387, 555);
             this.FicheroComandosTXT.TabIndex = 0;
             this.FicheroComandosTXT.Text = "";
             // 
@@ -557,40 +581,40 @@
             // ParametrosDGV
             // 
             this.ParametrosDGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ParametrosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ParametrosDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.ParametrosDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ParametrosDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ParametrosDGV.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ParametrosDGV.DefaultCellStyle = dataGridViewCellStyle22;
             this.ParametrosDGV.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ParametrosDGV.Location = new System.Drawing.Point(8, 62);
             this.ParametrosDGV.Name = "ParametrosDGV";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ParametrosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ParametrosDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.ParametrosDGV.RowHeadersVisible = false;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ParametrosDGV.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ParametrosDGV.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.ParametrosDGV.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.ParametrosDGV.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.ParametrosDGV.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -601,8 +625,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle20;
             this.Column1.FillWeight = 120F;
             this.Column1.HeaderText = "C1";
             this.Column1.Name = "Column1";
@@ -610,8 +634,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle21;
             this.Column2.FillWeight = 120F;
             this.Column2.HeaderText = "C2";
             this.Column2.Name = "Column2";
@@ -619,7 +643,7 @@
             // 
             // CleanBTN
             // 
-            this.CleanBTN.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.CleanBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.CleanBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CleanBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CleanBTN.Location = new System.Drawing.Point(183, 33);
@@ -651,13 +675,14 @@
             // 
             this.HeadparamsPNL.BackColor = System.Drawing.Color.Teal;
             this.HeadparamsPNL.Controls.Add(this.InsertHeadParamsBTN);
-            this.HeadparamsPNL.Location = new System.Drawing.Point(1280, 136);
+            this.HeadparamsPNL.Location = new System.Drawing.Point(1616, 32);
             this.HeadparamsPNL.Name = "HeadparamsPNL";
-            this.HeadparamsPNL.Size = new System.Drawing.Size(327, 223);
+            this.HeadparamsPNL.Size = new System.Drawing.Size(330, 223);
             this.HeadparamsPNL.TabIndex = 4;
             // 
             // InsertHeadParamsBTN
             // 
+            this.InsertHeadParamsBTN.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.InsertHeadParamsBTN.Location = new System.Drawing.Point(127, 188);
             this.InsertHeadParamsBTN.Name = "InsertHeadParamsBTN";
             this.InsertHeadParamsBTN.Size = new System.Drawing.Size(75, 32);
@@ -708,6 +733,7 @@
             // ReloadBTN
             // 
             this.ReloadBTN.BackColor = System.Drawing.Color.Lime;
+            this.ReloadBTN.Enabled = false;
             this.ReloadBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReloadBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReloadBTN.Location = new System.Drawing.Point(6, 595);
@@ -716,6 +742,7 @@
             this.ReloadBTN.TabIndex = 1;
             this.ReloadBTN.Text = "Recargar";
             this.ReloadBTN.UseVisualStyleBackColor = false;
+            this.ReloadBTN.Visible = false;
             this.ReloadBTN.Click += new System.EventHandler(this.ReloadBTN_Click);
             // 
             // PowerMillTreeView
@@ -724,6 +751,7 @@
             this.PowerMillTreeView.Name = "PowerMillTreeView";
             this.PowerMillTreeView.Size = new System.Drawing.Size(260, 575);
             this.PowerMillTreeView.TabIndex = 0;
+            this.PowerMillTreeView.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.PowerMillTreeView_AfterCheck);
             // 
             // XmlPanel
             // 
@@ -771,6 +799,127 @@
             this.XMLtreeView.Size = new System.Drawing.Size(262, 244);
             this.XMLtreeView.TabIndex = 0;
             // 
+            // PowerMillOptionsPanel
+            // 
+            this.PowerMillOptionsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.PowerMillOptionsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PowerMillOptionsPanel.Controls.Add(this.ClosePMOptionsBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.TodoPowerMillBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.ProgramasCNPMBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.PlanosDeTrabajoPMBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.HerramientasPMBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.PatronesPMBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.LimitesPMBTN);
+            this.PowerMillOptionsPanel.Controls.Add(this.TrayectoriasPMBTN);
+            this.PowerMillOptionsPanel.Location = new System.Drawing.Point(1280, 82);
+            this.PowerMillOptionsPanel.Name = "PowerMillOptionsPanel";
+            this.PowerMillOptionsPanel.Size = new System.Drawing.Size(262, 277);
+            this.PowerMillOptionsPanel.TabIndex = 7;
+            // 
+            // ProgramasCNPMBTN
+            // 
+            this.ProgramasCNPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ProgramasCNPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProgramasCNPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProgramasCNPMBTN.Location = new System.Drawing.Point(54, 204);
+            this.ProgramasCNPMBTN.Name = "ProgramasCNPMBTN";
+            this.ProgramasCNPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.ProgramasCNPMBTN.TabIndex = 5;
+            this.ProgramasCNPMBTN.Text = "PROGRAMASCN";
+            this.ProgramasCNPMBTN.UseVisualStyleBackColor = false;
+            this.ProgramasCNPMBTN.Click += new System.EventHandler(this.ProgramasCNPMBTN_Click);
+            // 
+            // PlanosDeTrabajoPMBTN
+            // 
+            this.PlanosDeTrabajoPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.PlanosDeTrabajoPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PlanosDeTrabajoPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlanosDeTrabajoPMBTN.Location = new System.Drawing.Point(54, 175);
+            this.PlanosDeTrabajoPMBTN.Name = "PlanosDeTrabajoPMBTN";
+            this.PlanosDeTrabajoPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.PlanosDeTrabajoPMBTN.TabIndex = 4;
+            this.PlanosDeTrabajoPMBTN.Text = "PLANOS DE TRABAJO";
+            this.PlanosDeTrabajoPMBTN.UseVisualStyleBackColor = false;
+            this.PlanosDeTrabajoPMBTN.Click += new System.EventHandler(this.PlanosDeTrabajoPMBTN_Click);
+            // 
+            // HerramientasPMBTN
+            // 
+            this.HerramientasPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.HerramientasPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HerramientasPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HerramientasPMBTN.Location = new System.Drawing.Point(54, 146);
+            this.HerramientasPMBTN.Name = "HerramientasPMBTN";
+            this.HerramientasPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.HerramientasPMBTN.TabIndex = 3;
+            this.HerramientasPMBTN.Text = "HERRAMIENTAS";
+            this.HerramientasPMBTN.UseVisualStyleBackColor = false;
+            this.HerramientasPMBTN.Click += new System.EventHandler(this.HerramientasPMBTN_Click);
+            // 
+            // PatronesPMBTN
+            // 
+            this.PatronesPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.PatronesPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PatronesPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatronesPMBTN.Location = new System.Drawing.Point(54, 117);
+            this.PatronesPMBTN.Name = "PatronesPMBTN";
+            this.PatronesPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.PatronesPMBTN.TabIndex = 2;
+            this.PatronesPMBTN.Text = "PATRONES";
+            this.PatronesPMBTN.UseVisualStyleBackColor = false;
+            this.PatronesPMBTN.Click += new System.EventHandler(this.PatronesPMBTN_Click);
+            // 
+            // LimitesPMBTN
+            // 
+            this.LimitesPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LimitesPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LimitesPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LimitesPMBTN.Location = new System.Drawing.Point(54, 88);
+            this.LimitesPMBTN.Name = "LimitesPMBTN";
+            this.LimitesPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.LimitesPMBTN.TabIndex = 1;
+            this.LimitesPMBTN.Text = "LIMITES";
+            this.LimitesPMBTN.UseVisualStyleBackColor = false;
+            this.LimitesPMBTN.Click += new System.EventHandler(this.LimitesPMBTN_Click);
+            // 
+            // TrayectoriasPMBTN
+            // 
+            this.TrayectoriasPMBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TrayectoriasPMBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TrayectoriasPMBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrayectoriasPMBTN.Location = new System.Drawing.Point(54, 59);
+            this.TrayectoriasPMBTN.Name = "TrayectoriasPMBTN";
+            this.TrayectoriasPMBTN.Size = new System.Drawing.Size(154, 23);
+            this.TrayectoriasPMBTN.TabIndex = 0;
+            this.TrayectoriasPMBTN.Text = "TRAYECTORIAS";
+            this.TrayectoriasPMBTN.UseVisualStyleBackColor = false;
+            this.TrayectoriasPMBTN.Click += new System.EventHandler(this.TrayectoriasPMBTN_Click);
+            // 
+            // TodoPowerMillBTN
+            // 
+            this.TodoPowerMillBTN.BackColor = System.Drawing.Color.Aqua;
+            this.TodoPowerMillBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TodoPowerMillBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TodoPowerMillBTN.Location = new System.Drawing.Point(54, 8);
+            this.TodoPowerMillBTN.Name = "TodoPowerMillBTN";
+            this.TodoPowerMillBTN.Size = new System.Drawing.Size(154, 23);
+            this.TodoPowerMillBTN.TabIndex = 6;
+            this.TodoPowerMillBTN.Text = "TODO";
+            this.TodoPowerMillBTN.UseVisualStyleBackColor = false;
+            this.TodoPowerMillBTN.Click += new System.EventHandler(this.TodoPowerMillBTN_Click);
+            // 
+            // ClosePMOptionsBTN
+            // 
+            this.ClosePMOptionsBTN.BackColor = System.Drawing.Color.Red;
+            this.ClosePMOptionsBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClosePMOptionsBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClosePMOptionsBTN.Location = new System.Drawing.Point(96, 242);
+            this.ClosePMOptionsBTN.Name = "ClosePMOptionsBTN";
+            this.ClosePMOptionsBTN.Size = new System.Drawing.Size(75, 23);
+            this.ClosePMOptionsBTN.TabIndex = 7;
+            this.ClosePMOptionsBTN.Text = "CERRAR";
+            this.ClosePMOptionsBTN.UseVisualStyleBackColor = false;
+            this.ClosePMOptionsBTN.Click += new System.EventHandler(this.ClosePMOptionsBTN_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,6 +927,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1665, 657);
+            this.Controls.Add(this.PowerMillOptionsPanel);
             this.Controls.Add(this.XmlPanel);
             this.Controls.Add(this.HeadparamsPNL);
             this.Controls.Add(this.PowerMillPanel);
@@ -790,6 +940,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Administracion de Comandos Repetitivos";
+            this.Leave += new System.EventHandler(this.Main_Leave);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -809,6 +960,7 @@
             this.HeadparamsPNL.ResumeLayout(false);
             this.PowerMillPanel.ResumeLayout(false);
             this.XmlPanel.ResumeLayout(false);
+            this.PowerMillOptionsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -875,6 +1027,16 @@
         private System.Windows.Forms.Button AplicarXmlBTN;
         private System.Windows.Forms.Button XmlPanelCloseBTN;
         private System.Windows.Forms.TreeView XMLtreeView;
+        private System.Windows.Forms.Button SendToPowerMillBTN;
+        private System.Windows.Forms.Panel PowerMillOptionsPanel;
+        private System.Windows.Forms.Button ProgramasCNPMBTN;
+        private System.Windows.Forms.Button PlanosDeTrabajoPMBTN;
+        private System.Windows.Forms.Button HerramientasPMBTN;
+        private System.Windows.Forms.Button PatronesPMBTN;
+        private System.Windows.Forms.Button LimitesPMBTN;
+        private System.Windows.Forms.Button TrayectoriasPMBTN;
+        private System.Windows.Forms.Button TodoPowerMillBTN;
+        private System.Windows.Forms.Button ClosePMOptionsBTN;
     }
 }
 

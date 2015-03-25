@@ -30,9 +30,13 @@ namespace GFR
         List<BaseHeadParams> headParams = new List<BaseHeadParams>();   //parametro de la cabezera
         int headParamsCount = 0;                            //numero de parametros de cabezera
         string _pathmultifiles = "";                        //ruta de los ficheros seleecionados en elselector de multiple ficheros de nombre
+        List<string> xmltallas = new List<string>();        //listado de las tallas del xml
         //variables para powermill
         clsPowerMILLInstance PowerMill;
         bool PowerMillisConnect = false;
+        List<PowerMillData> PMData = new List<PowerMillData>();//Datos del arbol de powermill
+        bool OnlyOneCheckItem = false;
+        bool isGenericName = false;
         //fichero de inicio
         IniFile myIni;
 
@@ -49,10 +53,15 @@ namespace GFR
           // pm.Crear_Nueva_Conexion();
             //ConnectToPowrMill();
             CheckIniFile();
-            //ReadCustomXMl.LoadCustomXMl(@"C:\Escalas_serie_Lake.xml");
-   
+            string aaaa = "dasdjkl_sajd_ksa_34";
+            aaaa =  aaaa.GetGenericName();
+          //  MessageBox.Show(aaaa);
         }
-
+        /// <summary>
+        /// Selecciona el directorio principal 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DirectoySetBTN_MouseClick(object sender, MouseEventArgs e)
         {
             (sender as Button).BackColor = Color.MediumTurquoise;
@@ -70,7 +79,11 @@ namespace GFR
         {
             files = Directory.GetFiles(_pathD, "*.txt", SearchOption.AllDirectories);
 
-            DirectoyNameTXT.Text = folderBrowserDialog1.SelectedPath;
+            if (string.IsNullOrEmpty(DirectoyNameTXT.Text))
+            {
+                DirectoyNameTXT.Text = folderBrowserDialog1.SelectedPath;
+            }
+
             myIni.IniWriteValue("DirectoryGFR", "MainDirectory", DirectoyNameTXT.Text);
             // MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
             //vaciamos el tree view
@@ -154,7 +167,9 @@ namespace GFR
                 this.Controls.Add(xPanel);
                 xPanel.BringToFront();
                 HeadparamsPNL.Left = 350;
+                HeadparamsPNL.Size = new Size(330,(headParams.Count * 30));
                 HeadparamsPNL.BringToFront();
+                headParams.GetHeadParamsFromFile();
                 this.Refresh();
                 return true;
             }
@@ -257,6 +272,7 @@ namespace GFR
             //comprobamos si tenemos parametro de cabezera y mostramos una ventana con los mismo e introducir los datos
             if (headParams.Count > 0)
             {
+                
                 //rellenamos los valores añadidos en los text box del panel de introduccion de parametros de cabezera
                 foreach (BaseHeadParams hp in headParams)
                 {
@@ -268,6 +284,7 @@ namespace GFR
                         }
                     }
                 }
+               
                 //como tenemos datos rellenamos el fichero con la cabezera primero
                // foreach (BaseHeadParams hp in headParams)
                 foreach (string hdLine in _headLines)
@@ -276,7 +293,13 @@ namespace GFR
                    // foreach (string hdLine in _headLines)
                     foreach (BaseHeadParams hp in headParams)
                     {
-                        //si tiene el tipo <> es un parametro base de la cabezera
+                        //si tiene el tipo << >> es un parametro3 base de la cabezera
+                        if (hdLine.Contains(BaseClasses._headformat3) && hdLine.Contains(hp.varParam))
+                        {
+                            headtxtline = hdLine.Replace(BaseClasses._headformat3, hp.varValue + ';');
+                            FicheroComandosTXT.Text += headtxtline + "\n";
+                        }
+                        else //si tiene el tipo < > es un parametro2 base de la cabezera
                         if (hdLine.Contains(BaseClasses._headformat2) && hdLine.Contains(hp.varParam))
                         {
                             headtxtline = hdLine.Replace(BaseClasses._headformat2, hp.varValue+';');
@@ -468,6 +491,7 @@ namespace GFR
                 xPanel.SendToBack();
                 HeadparamsPNL.Left = 1500;
                 HeadparamsPNL.SendToBack();
+                headParams.SaveHeadParamsInFile();
             }
             else
             {
@@ -541,7 +565,7 @@ namespace GFR
         /// <summary>
         /// creamos la conexion a powermill
         /// </summary>
-        private void ConnectToPowrMill()
+        private void ConnectToPowerMill()
         {
             try
             {
@@ -550,16 +574,40 @@ namespace GFR
                 {
                     MessageBox.Show("Conexion realizada a powermill");
                     PowerMillisConnect = true;
-                    
                 }
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ///
             }
-            if (PowerMillisConnect)
+
+        }
+        /// <summary>
+        /// Ejecutamos macros individuales a la instancia de PowerMill 
+        /// </summary>
+        /// <param name="_cmdlines">Lista de commandos</param>
+        private void ExcuteCommandsToPowerMill(List<string> _cmdlines)
+        {
+            if (!PowerMillisConnect) ConnectToPowerMill();
+
+            PowerMill.Execute(FicheroComandosTXT.Lines);
+            //foreach (string cmdline in test111(_cmdlines))
+            //{
+            //    //
+            //}
+            //foreach (string cmdline in _cmdlines)
+            //{
+            //    string pmResult = PowerMill.ExecuteEx(cmdline);
+
+            //}
+           // PowerMill.CloseOLEConnections();
+        }
+        IEnumerable<string> test111(List<string> _cmdlines)
+        {
+            foreach (string cmdline in _cmdlines)
             {
-                ReadPowerMillProyect();
+                string pmResult = PowerMill.ExecuteEx(cmdline);
+                yield return null;
+                yield return pmResult;
             }
         }
         /// <summary>
@@ -568,128 +616,110 @@ namespace GFR
         /// </summary>
         private void CheckIniFile()
         {
-          
             string _pathDini;
-            if (File.Exists("GFR.ini"))
+            if (File.Exists(".\\GFR.ini"))
             {
-                myIni = new IniFile("GFR.ini");
-                _pathDini = myIni.IniReadValue("DirectoryGFR", "MainDirectory ");
+                myIni = new IniFile(".\\GFR.ini");
+                _pathDini = myIni.IniReadValue("DirectoryGFR", "MainDirectory");
                 //MessageBox.Show("Directory inicial: " +_pathDini);
                 if (!string.IsNullOrEmpty(_pathDini))
                 {
+                    DirectoyNameTXT.Text = _pathDini;
                     CrearAbrolDeFicheros(_pathDini);
                 }
             }
         }
-
-        #region POWERMILL_VARIABLES
-        int PatternCount = 0;
-        int PatternID = 0;
-        string[] PatternList;
-
-        int TrayectoriasCount = 0;
-        int TrayectoriasID = 0;
-        string[] TrayectoriasList;
-
-        int HerramientasCount = 0;
-        int HerramientasID = 0;
-        string[] HerramientasList;
-
-        int LimitesCount = 0;
-        int LimitesID = 0;
-        string[] LimitesList;
-
-        int PlanosTrabajoCount = 0;
-        int PlanosTrabajoID = 0;
-        string[] PlanosTrabajoList;
-        #endregion
-
+        /// <summary>
+        /// leemos todos los apartados del powermill
+        /// </summary>
         private void ReadPowerMillProyect()
         {
             if (PowerMillisConnect)
             {
-                //TRAYECTORIAS - TOOLPATH
-                PowerMill.GetEntityList(clsPowerMILLOLE.enumPowerMILLEntityType.pmToolpath, ref TrayectoriasCount, ref TrayectoriasList, ref TrayectoriasID);
-                //HERRAMIENTAS - TOOL
-                PowerMill.GetEntityList(clsPowerMILLOLE.enumPowerMILLEntityType.pmTool, ref HerramientasCount, ref HerramientasList, ref HerramientasID);
-                //LIMITES - pmBoundary ((NOTA TAMBIEN INCLUYE NIVELES Y CONJUNTOS))
-                PowerMill.GetEntityList(clsPowerMILLOLE.enumPowerMILLEntityType.pmBoundary, ref LimitesCount, ref LimitesList, ref LimitesID);
-                //PATRONES - PATTERN
-                PowerMill.GetEntityList(clsPowerMILLOLE.enumPowerMILLEntityType.pmPattern, ref PatternCount, ref PatternList, ref PatternID);
-                //PLANOS DE TRABAJO
-                PowerMill.GetEntityList(clsPowerMILLOLE.enumPowerMILLEntityType.pmWorkplane, ref PlanosTrabajoCount, ref PlanosTrabajoList, ref PlanosTrabajoID);
+                ////TRAYECTORIAS - TOOLPATH
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmToolpath, "TRAYECTORIAS"));
+                ////HERRAMIENTAS - TOOL
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmTool, "HERRAMIENTAS"));
+                ////LIMITES - pmBoundary ((NOTA TAMBIEN INCLUYE NIVELES Y CONJUNTOS))
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmBoundary, "LIMITES"));
+                ////PATRONES - PATTERN
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmPattern, "PATRONES"));
+                ////PLANOS DE TRABAJO
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmWorkplane, "PLANOS DE TRABAJO"));
+                ///
+                PMData.Add(new PowerMillData(clsPowerMILLOLE.enumPowerMILLEntityType.pmNCProgram, "PROGRAMASCN"));
 
-                CreatePowerMillTreeView();
+                foreach (PowerMillData _pmd in PMData)
+                {
+                    PowerMill.GetEntityList(_pmd.nameType,ref _pmd.count,ref _pmd.Data,ref _pmd.ID);
+                }
             }
         }
-
+        /// <summary>
+        /// creamos todos los apartados del power mill
+        /// </summary>
         private void CreatePowerMillTreeView()
         {
             int pmtvCount = 0;
             PowerMillTreeView.Nodes.Clear();
             PowerMillTreeView.CheckBoxes = true;
             PowerMillTreeView.BeginUpdate();
-            if (TrayectoriasCount > 0)
-            {
-                PowerMillTreeView.Nodes.Add("TRAYECTORIAS");
-                for (int cnt = 0; cnt < TrayectoriasCount; cnt++)
-                {
-                    PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(TrayectoriasList[cnt]);
-                }
-            }
-            if (HerramientasCount > 0)
-            {
-                PowerMillTreeView.Nodes.Add("HERRAMIENTAS");
-                pmtvCount++;
-                for (int cnt = 0; cnt < HerramientasCount; cnt++)
-                {
-                    PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(HerramientasList[cnt]);
-                }
-            }
-            if( LimitesCount > 0)
-            {
-                PowerMillTreeView.Nodes.Add("LIMITES");
-                pmtvCount++;
-                for (int cnt = 0; cnt < LimitesCount; cnt++)
-                {
-                    PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(LimitesList[cnt]);
-                }
 
-            }
-            if (PatternCount > 0)
+            foreach (PowerMillData _pmd in PMData)
             {
-                PowerMillTreeView.Nodes.Add("PATRONES");
-                pmtvCount++;
-                for (int cnt = 0; cnt < PatternCount; cnt++)
+                if (_pmd.count > 0)
                 {
-                    PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(PatternList[cnt]);
+                    PowerMillTreeView.Nodes.Add(_pmd.name);
+                    for (int cnt = 0; cnt < _pmd.count; cnt++)
+                    {
+                        PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(_pmd.Data[cnt]);
+                    }
+                    pmtvCount++;
                 }
             }
-
-            if (PlanosTrabajoCount > 0)
-            {
-                PowerMillTreeView.Nodes.Add("PLANOS DE TRABAJO");
-                pmtvCount++;
-                for (int cnt = 0; cnt < PlanosTrabajoCount; cnt++)
-                {
-                    PowerMillTreeView.Nodes[pmtvCount].Nodes.Add(PlanosTrabajoList[cnt]);
-                }
-            }
-        
 
             PowerMillTreeView.EndUpdate();
         }
-
+        /// <summary>
+        /// Creamos un arbol solo con el apartado que le indiquemos del powermill
+        /// </summary>
+        /// <param name="_type"></param>
+        private void CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType _type)
+        {
+            PowerMillTreeView.Nodes.Clear();
+            PowerMillTreeView.CheckBoxes = true;
+            PowerMillTreeView.BeginUpdate();
+            foreach (PowerMillData _pmd in PMData)
+            {
+                if (_pmd.nameType == _type)
+                {
+                    PowerMillTreeView.Nodes.Add(_pmd.name);
+                    for (int cnt = 0; cnt < _pmd.count; cnt++)
+                    {
+                        PowerMillTreeView.Nodes[0].Nodes.Add(_pmd.Data[cnt]);
+                    }
+                    break;
+                }
+            }
+            PowerMillTreeView.EndUpdate();
+        }
+        /// <summary>
+        /// recargamos los datos del arbol de powermill
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReloadBTN_Click(object sender, EventArgs e)
         {
             ReadPowerMillProyect();
         }
+
+       
         /// <summary>
-        /// comprobamos en un treeviw que items estan seleecionados y los almacenamos
+        /// comprobamos en un treeview que items estan seleecionados y los almacenamos
         /// </summary>
         /// <param name="_tw"></param>
         /// <returns></returns>
-        private List<string> CheckItemsInTree(TreeView _tw)
+        private List<string> GetCheckedItemsInTree(TreeView _tw)
         {
             List<string> itemsChecked = new List<string>();
             foreach (TreeNode n in _tw.Nodes)
@@ -698,26 +728,35 @@ namespace GFR
                 {
                     if (n1.Checked)
                     {
-                        itemsChecked.Add(n1.Text);
+                        if (isGenericName)
+                        {
+                            itemsChecked.Add(n1.Text.GetGenericName());
+                        }
+                        else
+                        {
+                            itemsChecked.Add(n1.Text);
+                        }
                     }
                 }
             }
+            isGenericName = false;
             return itemsChecked;
         }
         /// <summary>
-        /// 
+        /// recojemos los datos seleccionas del arbol de powermill y los aplicamos a la columna seleccionada
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AplicarPM_BTN_Click(object sender, EventArgs e)
         {
             List<string> auxvar = new List<string>();
-            auxvar =  CheckItemsInTree(PowerMillTreeView);
+            auxvar = GetCheckedItemsInTree(PowerMillTreeView);
             InsertDataInColumParam(auxvar);
             ClosePowerMillPanelBTN_Click(sender, e);
+            OnlyOneCheckItem = false;
         }
         /// <summary>
-        /// rellenamos la columna correspondiente al parametro seleecionado
+        /// rellenamos la columna correspondiente al parametro seleccionado con la lista de parametros seleccionados
         /// </summary>
         /// <param name="_datalist">lista de datos</param>
         private void InsertDataInColumParam(List<string> _datalist)
@@ -726,23 +765,56 @@ namespace GFR
             {
                 if (ParamsCheck.GetItemChecked(i))
                 {
-                    while (ParametrosDGV.RowCount < _datalist.Count)
+                    int cnt =( ParametrosDGV.Rows.Count-1);
+
+                    //while (ParametrosDGV.RowCount < _datalist.Count)
+                    //{
+                    //    ParametrosDGV.Rows.Add();
+                    //}
+                    for (int x = 0; x < _datalist.Count;x++ )
                     {
                         ParametrosDGV.Rows.Add();
                     }
-                    int cnt = 0;
+                    //numero de valores de parametros que vamos a introducir
                     foreach (string s in _datalist)
                     {
-                        ParametrosDGV.Rows[cnt].Cells[i].Value = s;
-                        if (ParametrosDGV.Columns[1].HeaderText.Contains(BaseClasses._typeparam4))
+                        bool _canSetRowValue = true;
+                        //comprobar que el valor no este ya introducido
+                        foreach (DataGridViewRow _row in ParametrosDGV.Rows)
                         {
-                            ParametrosDGV.Rows[cnt].Cells[1].Value = _pathmultifiles;
+                            if (_row.Cells[i].Value != null)
+                            {
+                                if (_row.Cells[i].Value.ToString() == s)
+                                {
+                                    _canSetRowValue = false;
+                                    //ParametrosDGV.Rows.RemoveAt(ParametrosDGV.Rows.Count - 1);
+                                    break;
+                                }
+                            }
                         }
-                        //else
-                        //{
-                        //    ParametrosDGV.Rows[cnt].Cells[i].Value = s;
-                        //}
-                        cnt++;
+                        if (_canSetRowValue)
+                        {
+                            ParametrosDGV.Rows[cnt].Cells[i].Value = s;
+                            if (ParametrosDGV.Columns[1].HeaderText.Contains(BaseClasses._typeparam4))
+                            {
+                                ParametrosDGV.Rows[cnt].Cells[1].Value = _pathmultifiles;
+                            }
+                            cnt++;
+                        }
+                    }
+                    //vaciamos filas vacias
+                    for (int y = ParametrosDGV.Rows.Count - 1; y >= 0; y-- )
+                    {
+                        try
+                        {
+                           // if (string.IsNullOrEmpty(ParametrosDGV.Rows[y].Cells[0].Value.ToString()) && string.IsNullOrEmpty(ParametrosDGV.Rows[y].Cells[1].Value.ToString()))
+                            if (ParametrosDGV.Rows[y].Cells[0].Value == null && ParametrosDGV.Rows[y].Cells[1].Value == null)
+                            {
+                                ParametrosDGV.Rows.RemoveAt(y);
+                            }
+                        }
+                        catch (Exception ex) {// MessageBox.Show(ex.ToString());
+                        }
                     }
                 }
             }
@@ -756,7 +828,7 @@ namespace GFR
                 ParamsCheck.SetItemChecked(ParamsCheck.CheckedIndices[0], false);
                 ParamsCheck.ItemCheck += ParamsCheck_ItemCheck;
             }
-            //TODO comprobar si el parametro tiene parametrizada su inserccion de datos y monstramos solo lo que puede hacer
+            //comprobar si el parametro tiene parametrizada su inserccion de datos y monstramos solo lo que puede hacer
 
             PowerMillBTN.Visible = true;
             XmlCustomFile_BTN.Visible = true;
@@ -788,10 +860,6 @@ namespace GFR
                 SecuenciaNumerosPanel.Visible = false;
                 NombreFicherosPanel.Visible = false;
             }
-            
-   
-       
-            
         }
         /// <summary>
         /// Nos conectamos con powermill y monstramos un arbol con todos los parametros que hemos solicitado.
@@ -800,17 +868,50 @@ namespace GFR
         /// <param name="e"></param>
         private void PowerMillBTN_Click(object sender, EventArgs e)
         {
-            ConnectToPowrMill();
+            OpenPowerMillOptionsPanel();
+       
+            ConnectToPowerMill();
             if (PowerMillisConnect)
             {
-                PowerMillPanel.Location = ParametrosPanel.Location;
-                PowerMillPanel.BringToFront();
+                ReadPowerMillProyect();
+              
             }
         }
-
+        /// <summary>
+        /// Abrimos el panel de las distintas opciones de recojer datos del powermill
+        /// </summary>
+        private void OpenPowerMillOptionsPanel()
+        {
+            PowerMillOptionsPanel.Location = ParametrosPanel.Location;
+            PowerMillOptionsPanel.Top = 380;
+            PowerMillOptionsPanel.BringToFront();
+        }
+        /// <summary>
+        /// Cerramos el panel de las distinas opciones de recojer datos del powermill
+        /// </summary>
+        private void ClosePowerMillOptionsPanel()
+        {
+            PowerMillOptionsPanel.Left = 2000;
+            OpenPowerMillPanel();
+        }
+        /// <summary>
+        /// Abrimos el Panel con el TreeView de PowerMill
+        /// </summary>
+        private void OpenPowerMillPanel()
+        {
+           // ClosePowerMillOptionsPanel();
+            PowerMillPanel.Location = ParametrosPanel.Location;
+            PowerMillPanel.BringToFront();
+        }
+        /// <summary>
+        /// Cerramos el panel con el TreeView de PowerMill
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClosePowerMillPanelBTN_Click(object sender, EventArgs e)
         {
             PowerMillPanel.Left = 2000;
+            OnlyOneCheckItem = false;
         }
         /// <summary>
         /// Abrimos el fichero xml y lo mostramos en el treeview
@@ -819,19 +920,29 @@ namespace GFR
         /// <param name="e"></param>
         private void XmlCustomFile_BTN_Click(object sender, EventArgs e)
         {
-            openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "All files (*.*)|*.*";//" | xml files (*.xml)|*.xml | txt files (*.txt)|*.txt";
-            openFileDialog1.ShowDialog();
-            if (!string.IsNullOrEmpty( openFileDialog1.FileName))
+            //comprobamos si ya teniamos tallas cargadas
+            if (xmltallas.Count <= 0)
             {
-                List<string> xmltallas = new List<string>();
-                xmltallas = ReadCustomXMl.LoadCustomXMl(openFileDialog1.FileName);
+                openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.FileName = "";
+                openFileDialog1.Filter = "All files (*.*)|*.*";//" | xml files (*.xml)|*.xml | txt files (*.txt)|*.txt";
+                openFileDialog1.ShowDialog();
+        
+                if (!string.IsNullOrEmpty(openFileDialog1.FileName))
+                {
+                    xmltallas = new List<string>();
+                    //leemos y almacenamos las tallas del fichero xml 
+                    xmltallas = ReadCustomXMl.LoadCustomXMl(openFileDialog1.FileName);
+                }
+            }
+            //comprobamos que existan tallas en el fichero
+            if(xmltallas.Count > 0)
+            {
+                //mostramos el panel de las tallas
                 XmlPanel.Left = ParametrosPanel.Left;
                 XmlPanel.BringToFront();
-                // rellenar el treeview
+                // rellenamos el treeview
                 int xmltvCount = 0;
-
                 XMLtreeView.Nodes.Clear();
                 XMLtreeView.CheckBoxes = true;
                 XMLtreeView.BeginUpdate();
@@ -841,25 +952,39 @@ namespace GFR
                     for (int cnt = 0; cnt < xmltallas.Count; cnt++)
                     {
                         XMLtreeView.Nodes[xmltvCount].Nodes.Add(xmltallas[cnt]);
+                        // marcamos las tallas siempre, el usuario decidira cual no quiere
+                        XMLtreeView.Nodes[xmltvCount].Nodes[cnt].Checked = true;
                     }
                 }
                 XMLtreeView.EndUpdate();
             }
         }
-
+        /// <summary>
+        /// Recojemos los datos de las tallas seleccionadas y las insertamos en la columna de parametros seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AplicarXmlBTN_Click(object sender, EventArgs e)
         {
             List<string> xmltallas = new List<string>();
-            xmltallas = CheckItemsInTree(XMLtreeView);
+            xmltallas = GetCheckedItemsInTree(XMLtreeView);
             InsertDataInColumParam(xmltallas);
             XmlPanelCloseBTN_Click( sender,  e);
         }
-
+        /// <summary>
+        /// Cerramos el panel con las tallas mostradas del XML
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void XmlPanelCloseBTN_Click(object sender, EventArgs e)
         {
             XmlPanel.Left = 2000;
         }
-
+        /// <summary>
+        /// cargamos el fichero de procedimientos seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadProcedureBTN_Click(object sender, EventArgs e)
         {
             (sender as Button).BackColor = Color.MediumTurquoise;
@@ -872,8 +997,11 @@ namespace GFR
                     _pathDirectory = Utils.GetRealPath(files, node.Text);
                     // MessageBox.Show(string.Format("You selected: {0}", node.Text));
                     FP_RTB.LoadFile(Path.Combine(_pathDirectory, node.Text), RichTextBoxStreamType.PlainText);
+                    //limpiamos la tabla de parametros rellando anteriormente de otro procedimiento
                     CleanBTN_Click(sender, e);
+                    //limpiamos el documento de los comandos generados
                     FicheroComandosTXT.Text = "";
+                    //comprobamos si tenemos parametros en el fichero
                     if (CheckParamsInFile())
                     {
                         foreach (int h in Utils.AdditiveInt(690, 20))
@@ -881,11 +1009,50 @@ namespace GFR
                             this.Size = new Size(325 + h, 700);
                             this.Refresh();
                         }
+                        //comprobar si solo tenemos un parametro modificable
+                        if (!_param1.Contains(BaseClasses._typeparam4) && (_param2.Contains(BaseClasses._typeparam4) || string.IsNullOrEmpty(_param2)) )
+                        {
+                            ParamsCheck.SetItemChecked(0, true);
+                            //comprobamos que tipo de parametro es
+                            int TypeParam = BaseClasses.CheckTypeParam(_param1);
+                            if (TypeParam != 0)
+                            {
+                                //si es un parametro definido abrimos el commando establecido ( ej : !mf de multifichero ejecutamos automaticamente el dialogo para seleccionar multiples ficheros
+                                switch (TypeParam)
+                                {
+                                    case 1: //powermill 
+                                        TodoPowerMillBTN_Click(sender, e);
+                                        break;
+                                    case 2: //xml
+                                        XmlCustomFile_BTN_Click(sender, e);
+                                        break;
+                                    case 3: //multiples ficheros seleccion
+                                        InsertaNombreFicherosBTN_Click(sender, e);
+                                        break;
+                                    case 4:
+                                        TrayectoriasPMBTN_Click(sender, e);
+                                        break;
+                                    case 5:
+                                        LimitesPMBTN_Click(sender, e);
+                                        break;
+                                    case 6:
+                                        PatronesPMBTN_Click(sender, e);
+                                        break;
+                                    case 7:
+                                        PlanosDeTrabajoPMBTN_Click(sender, e);
+                                        break;
+                                    case 8:
+                                        ProgramasCNPMBTN_Click(sender, e);
+                                        break;
+                                }
+                            }
+                        }
                     }
                     else
                     {
                         this.Size = new Size(730, 700);
                     }
+                    tabControl1.SelectedTab = tabPage1;
                 }
             }
             else
@@ -902,7 +1069,116 @@ namespace GFR
 
             }
         }
+        /// <summary>
+        /// Enviamos los comandos generados a powermill para que los ejecute
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SendToPowerMillBTN_Click(object sender, EventArgs e)
+        {
+            List<string> _cmdLines = new List<string>();
+            
+            foreach (string _cline in FicheroComandosTXT.Lines)
+            {
+                _cmdLines.Add(_cline);
+            }
+            ExcuteCommandsToPowerMill(_cmdLines);
+        }
 
+        private void TrayectoriasPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmToolpath);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+            isGenericName = true;
+        }
 
-      }
+        private void LimitesPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmBoundary);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+            isGenericName = true;
+        }
+
+        private void PatronesPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmPattern);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+            isGenericName = true;
+        }
+
+        private void HerramientasPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmTool);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+        }
+
+        private void PlanosDeTrabajoPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmWorkplane);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+        }
+
+        private void ProgramasCNPMBTN_Click(object sender, EventArgs e)
+        {
+            CreateCustomPowerMillTreeView(clsPowerMILLOLE.enumPowerMILLEntityType.pmNCProgram);
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+            isGenericName = true;
+        }
+
+        private void TodoPowerMillBTN_Click(object sender, EventArgs e)
+        {
+            CreatePowerMillTreeView();
+            ClosePowerMillOptionsPanel();
+            OnlyOneCheckItem = true;
+        }
+
+        private void ClosePMOptionsBTN_Click(object sender, EventArgs e)
+        {
+            ClosePowerMillOptionsPanel();
+        }
+
+        private void Main_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                PowerMill.CloseOLEConnections();
+            }
+            catch (Exception ex) { }
+        }
+        //Es para que solo se seleccione un elemento cuando se lo indiquemos
+        private void PowerMillTreeView_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (OnlyOneCheckItem)
+            {
+                // only do it if the node became checked:
+                if (e.Node.Checked)
+                {
+                    // for all the nodes in the tree...
+                    foreach (TreeNode cur_node in e.Node.TreeView.Nodes)
+                    {
+                        // ... which are not the freshly checked one...
+                        if (cur_node != e.Node)
+                        {
+                            // ... uncheck them
+                            cur_node.Checked = false;
+                        }
+                        foreach (TreeNode sub_node in cur_node.Nodes)
+                        {
+                            if (sub_node != e.Node)
+                            {
+                                // ... uncheck them
+                                sub_node.Checked = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
